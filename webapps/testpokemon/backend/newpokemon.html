@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="前端與網頁資料庫之實例應用">
+        <meta name="author" content="venus_bird">
+
+<script>
+        function previewFile() {
+      var preview = document.querySelector('#open-media');
+      var file = document.querySelector('input[type=file]').files[0];
+      var reader = new FileReader();
+
+      reader.addEventListener("load", function() {
+        preview.src = reader.result;
+      }, false);
+
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    }
+</script>
+        <title>Pokemon backend</title>
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+
+                                <!-- Semantic UI CSS -->
+                                <link href="vendors/semantic-ui/dist/semantic.css" rel="stylesheet"></head>
+
+                                <body>
+                                    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                                        <div class="navbar-header">
+                                            <!-- <a class="navbar-brand" href="#index.html"><img src="images/icon2.png"></a> -->
+                                            <a class="navbar-brand" href="#index.html">POKEMON Backend</a>
+                                        </div>
+
+                                        <!-- Collect the nav links, forms, and other content for toggling -->
+                                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                            <ul class="nav navbar-nav">
+                                                <li>
+                                                    <a href="#" style="font-size: 25px;">
+                                                        <i class="inverted alarm icon"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" style="font-size: 25px;">
+                                                        <i class="inverted user icon"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" style="font-size: 25px;">
+                                                        <i class="inverted mail icon"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </nav>
+
+                                    <div class="container">
+                                        <div class="main ui padded grid">
+                                            <div id="left-sidebar" class="sidebar column three wide">
+                                                <div class="ui fluid center aligned vertical text menu">
+                                                    <a href="../pokemon/admin/page/chart.jsp" class="item" style="font-size:17px; font-family:Microsoft JhengHei; color: white">
+                                                        <i class="large inverted grey area chart icon"></i>
+                                                        統計圖表
+                                                    </a>
+
+                                                    <div class="ui divider"></div>
+                                                    <div class="header item" style="font-size:17px; font-family:Microsoft JhengHei; color: #367295;">
+                                                        <b>功能</b>
+                                                    </div>
+                                                    <div class="ui divider"></div>
+
+                                                    <a href="index2.jsp" class="item" style="font-size:17px; font-family:Microsoft JhengHei; color: white">
+                                                        <i class="large cube icon"></i>
+                                                        寶貝管理
+                                                    </a>
+
+                                                    <a href="index.jsp" class="item" style="font-size:17px; font-family:Microsoft JhengHei; color: white">
+                                                        <i class="large file text icon"></i>
+                                                        會員一覽
+                                                    </a>
+                                                    <a href="index2.html" class="item" style="font-size:17px; font-family:Microsoft JhengHei; color: white">
+                                                        <i class="large file text icon"></i>
+                                                        會員一覽
+                                                    </a>
+
+                                                    <div class="ui divider"></div>
+                                                    <!-- <div class="header item" style="font-size:17px; font-family:Microsoft JhengHei; color: #367295;"><b>會員</b></div>
+            <div class="ui divider"></div>
+
+            <a href="create2.html" class="item" style="font-size:17px; font-family:Microsoft JhengHei; color: white">
+                 <i class="large inverted grey user icon"></i>
+                 加入會員
+              </a> -->
+                                                </div>
+                                            </div>
+                                            <div class="content column thirteen wide" style="height: 855px;">
+                                                <div style="background: #fff; height: 65px; border:1px #ccc solid;border-radius:5px;">
+                                                    <div class="top menu column">
+                                                        <div class="ui fluid center aligned vertical text menu">
+                                                            <div href="{{ route('backend_index') }}" class="item" style="font-size:20px; font-family:Microsoft JhengHei;">
+                                                                <b>
+                                                                    <i class="large tag icon"></i>
+                                                                    <a id="title_banner" style="color: #0c0c0c">
+                                                                        會員
+                                                                    </a>
+                                                                </b>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    <form action="new.jsp" method="post">
+                                                      <div class="form-group">
+                                                        <label for="name" class="control-label">名稱</label>
+                                                        <input type="text" class="form-control" name="name">
+                                                      </div>
+                                                      <div class="form-group">
+                                                          <label for="logo" class="control-label">logo</label>
+                                                          <input type="text" class="form-control" name="logo">
+                                                      </div>
+                                                      <div class="form-group">
+                                                          <label for="price" class="control-label">價錢</label>
+                                                          <input type="text" class="form-control" name="price">
+                                                      </div>
+                                                      <div class="form-group">
+                                                          <label for="image" class="control-label">沙龍照</label>
+                                                          <img id="open-media" class="ui medium bordered image" src="">
+                                                          <input type="file" id="image" onchange="previewFile()" name="image" value="">
+
+                                                      </div>
+                                                      <div class="modal-footer">
+                                                        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button> -->
+                                                        <input type="submit" class="btn btn-primary" value="送出">
+                                                      </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            </div>
+
+
+
+
+
+
+                                                                                <!-- Bootstrap Core JavaScript -->
+                                                                                <script src="js/bootstrap.min.js"></script>
+                                                                            </body>
+                                                                        </html>
+                                                                    </html>
